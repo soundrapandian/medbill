@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: '1979_dot_matrix'; /*a name to be used later*/
+                src: url('1979_dot_matrix.ttf'); /*URL to font*/
+            }
+            body {
+                font-family: '1979_dot_matrix';
+            }
+            .spm {
+                font-size:24;
+            }
+            .cash_bill {
+                font-size:20;
+            }
+            .grand_total {
+                font-size:22;
+            }
+            hr {
+                border: 1px dotted black;
+            }
+        </style>
+    </head>
+    <body>
+        {% if bill_list %}
+            {% for bill in bill_list %}
+                <br><br><br>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td colspan="6" align="center">
+                                <span class="spm"><b>SOUNDRAPANDIAN MEDICALS</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="center">
+                                272,VOC STREET,PONMALAPATTI,TRICHY-4
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="center">
+                                TIN:33323563647 : DL No.:TRT/531/20/21
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" align="center">Phone: 2491693</td>
+                            <td colspan="1" align="right">{{ bill.time }}</td>
+                        </tr>
+                        <tr><td colspan="6"><hr></td></tr>
+                        <tr>
+                            <td colspan="6" align="left">Dr :</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="left">Pt.:</td>
+                        </tr>
+                        <tr><td colspan="6"><hr></td></tr>
+                        <tr>
+                            <td colspan="5">BILL NO.: {{ bill.bill_number }}</td>
+                            <td colspan="1" align="right">{{ bill.date }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="center">
+                                <span class="cash_bill">CASH BILL</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="10%">QTY</td>
+                            <td width="25%">DESCRIPTION</td>
+                            <td width="20%">MFR</td>
+                            <td width="15%">BATCH</td>
+                            <td width="15%">EXPIRY</td>
+                            <td width="15%">AMOUNT</td>
+                        </tr>
+                        <tr><td colspan="6"><hr></td></tr>
+                        {% for bill_item in bill.items %}
+                            <tr>
+                                <td width="10%">{{ bill_item.number }}</td>
+                                <td width="25%">{{ bill_item.medicine.name }}</td>
+                                <td width="20%"></td>
+                                <td width="15%"></td>
+                                <td width="15%"></td>
+                                <td width="15%" align="right">{{ bill_item.cost }}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr><td colspan="6"><hr></td></tr>
+                        <tr>
+                            <td colspan="2">Item(s): </td>
+                            <td colspan="2">Chek.by: </td>
+                            <td colspan="2" align="right">Total: {{ bill.total_amount }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" align="center">R.Off: {{ bill.round_off }}</td>
+                        </tr>
+                        <tr><td colspan="6"><hr></td></tr>
+                        <tr>
+                            <td colspan="2">Pre.by: </td>
+                            <td colspan="2">GRAND TOTAL: </td>
+                            <td colspan="2" align="right">
+                                <span class="grand_total">{{ bill.grand_total }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">E.&.0.E</td>
+                            <td colspan="4">WISH YOU A SPPEDY RECOVERY</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br><br>
+            {% endfor %}
+        {% else %}
+            <p>No Medical Bills</p>
+        {% endif %}
+    </body>
+</html>
