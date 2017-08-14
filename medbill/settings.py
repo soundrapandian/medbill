@@ -25,7 +25,7 @@ SECRET_KEY = '6@kd8r0vra&kjq0&03vx9gfnep%zrrsyt_=#ut+=ucv%8%84g4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spm-temp-bill.duckdns.org']
 
 
 # Application definition
