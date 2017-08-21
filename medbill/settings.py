@@ -25,13 +25,15 @@ SECRET_KEY = '6@kd8r0vra&kjq0&03vx9gfnep%zrrsyt_=#ut+=ucv%8%84g4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['spm-temp-bill.duckdns.org']
+ALLOWED_HOSTS = ['localhost', 'spm-temp-bill.duckdns.org']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'tempbill.apps.TempbillConfig',
+    'shop.apps.ShopConfig',
+    'tax.apps.TaxConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -40,6 +40,7 @@ class Bill(models.Model):
     def round_off(self):
         return (self.total_amount - self.total_amount.__round__(1)).__round__(2)
 
+
 class BillItem(models.Model):
     medicine = models.ForeignKey(Medicine, on_delete=None)
     bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
